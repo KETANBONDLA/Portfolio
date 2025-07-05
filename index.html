@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -518,6 +519,14 @@
         font-size: 1.4rem;
       }
 
+      /* Hide/show content based on screen size */
+      .desktop-only {
+        display: block;
+      }
+      .mobile-only {
+        display: none;
+      }
+
       /* Responsive */
       @media (max-width: 1024px) {
         .skills-container {
@@ -532,22 +541,15 @@
           margin-left: 0;
           margin-right: 0;
         }
-      /* Hide/show content based on screen size */
-.desktop-only {
-  display: block;
-}
-.mobile-only {
-  display: none;
-}
+      }
 
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none;
-  }
-  .mobile-only {
-    display: block;
-  }
-}
+      @media (max-width: 768px) {
+        .desktop-only {
+          display: none;
+        }
+        .mobile-only {
+          display: block;
+        }
 
         html {
           font-size: 55%;
@@ -662,35 +664,103 @@
           padding: 0.8rem 1.5rem;
         }
 
-        /* Mobile skill cards - show details by default */
+        /* Mobile skill cards - tap to reveal functionality */
+        .skill-box {
+          height: 250px;
+          position: relative;
+        }
+
+        /* Default state - only show icon and title */
         .skill-info p {
+          opacity: 0;
+          transform: translateY(20px);
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.4s ease-in-out;
+          color: white;
+        }
+
+        .skill-info h4 {
+          font-size: 2.2rem;
+          margin: 1rem 0;
+          color: white;
+        }
+
+        .skill-info i,
+        .skill-info svg {
+          color: white;
+          fill: white;
+        }
+
+        /* Tapped/Active state */
+        .skill-box.mobile-active {
+          background: white;
+          color: black;
+          border: 5px solid black;
+          transform: scale(1.03);
+        }
+
+        .skill-box.mobile-active .skill-info {
+          color: black;
+        }
+
+        .skill-box.mobile-active .skill-info h4 {
+          color: black;
+        }
+
+        .skill-box.mobile-active .skill-info p {
           opacity: 1;
           transform: translateY(0);
           max-height: 200px;
           margin-top: 1rem;
+          color: black;
         }
 
+        .skill-box.mobile-active .skill-info i {
+          color: black;
+          transform: scale(1.1);
+        }
+
+        .skill-box.mobile-active .skill-info svg {
+          fill: black;
+          transform: scale(1.1);
+        }
+
+        /* Add a subtle indicator for tap functionality */
+        .skill-box::after {
+          content: '👆';
+          position: absolute;
+          bottom: 1rem;
+          right: 1rem;
+          font-size: 1.5rem;
+          opacity: 0.7;
+          transition: opacity 0.3s ease;
+        }
+
+        .skill-box.mobile-active::after {
+          opacity: 0;
+        }
+
+        /* Enhanced social icons for mobile */
         .social-icons a {
-          font-size: 3rem; /* was 2.5rem */
-          padding: 1.2rem;  /* was 0.8rem */
-          margin: 2rem 0.8rem;
+          font-size: 3.5rem;
+          padding: 1.5rem;
+          margin: 2rem 1rem;
         }
 
-
-        /* Keep buttons horizontal on mobile */
+        /* Enhanced buttons for mobile */
         .btn-group {
           flex-direction: row;
-          gap: 1rem;
+          gap: 1.5rem;
           flex-wrap: wrap;
           justify-content: center;
         }
 
         .btn {
-          padding: 1.2rem 2.5rem; /* was 1rem 2rem */
-          font-size: 1.8rem;      /* was 1.6rem */
-          min-width: 150px;       /* was 140px */
+          padding: 1.5rem 3rem;
+          font-size: 2rem;
+          min-width: 180px;
         }
-
 
         .project-title {
           font-size: 2.5rem;
@@ -745,30 +815,43 @@
           gap: 1rem;
         }
 
+        .skill-box {
+          height: 220px;
+        }
+
+        .skill-info h4 {
+          font-size: 1.8rem;
+        }
+
+        .skill-box::after {
+          font-size: 1.2rem;
+          bottom: 0.5rem;
+          right: 0.5rem;
+        }
+
         .project-title {
           font-size: 2rem;
         }
 
-       .social-icons a {
-        font-size: 2.5rem; /* was 2rem */
-        padding: 1rem;     /* was 0.6rem */
-      }
+        /* Enhanced social icons for very small screens */
+        .social-icons a {
+          font-size: 3rem;
+          padding: 1.2rem;
+          margin: 1.5rem 0.8rem;
+        }
 
-
-        /* Ensure buttons stay horizontal even on very small screens */
+        /* Enhanced buttons for very small screens */
         .btn-group {
           flex-direction: row;
-          gap: 0.8rem;
+          gap: 1.2rem;
           flex-wrap: wrap;
         }
 
-
         .btn {
-          padding: 1rem 2rem;     /* was 0.8rem 1.5rem */
-          font-size: 1.6rem;      /* was 1.4rem */
-          min-width: 130px;       /* was 120px */
+          padding: 1.3rem 2.5rem;
+          font-size: 1.8rem;
+          min-width: 160px;
         }
-
       }
     </style>
   </head>
@@ -798,10 +881,7 @@
 <!-- Mobile version -->
 <p class="mobile-only">
   A dedicated Computer Science and Engineering student specializing in AI and Data Science. I'm passionate about using technology to solve real-world problems through data-driven solutions.
-<br>
-  <br>
 </p>
-
 
         <div class="social-icons">
           <a href="https://github.com/KETANBONDLA">
@@ -813,7 +893,6 @@
           <a href="https://www.instagram.com/ketan.bondla/">
             <i class="bx bxl-instagram-alt"></i>
           </a>
-          
         </div>
         <div class="btn-group">
           <a
@@ -827,6 +906,7 @@
 
       <div class="home-img">
         
+      </div>
     </section>
 
     <section class="skills" id="skills">
