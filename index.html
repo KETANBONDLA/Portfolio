@@ -8,7 +8,7 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <style>
+      <style>
       * {
         margin: 0;
         padding: 0;
@@ -227,8 +227,10 @@
 
       .skills-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2.5rem;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
       }
 
       .skill-box {
@@ -262,6 +264,8 @@
         color: white;
         transition: all 0.4s ease-in-out;
         position: relative;
+        width: 100%;
+        height: 100%;
       }
 
       .skill-box:hover .skill-info {
@@ -289,6 +293,7 @@
         transition: all 0.4s ease-in-out;
         max-height: 0;
         overflow: hidden;
+        color: white;
       }
 
       .skill-box:hover .skill-info p {
@@ -296,15 +301,30 @@
         transform: translateY(0);
         max-height: 200px;
         margin-top: 1rem;
+        color: black;
       }
 
       .skill-info i {
         font-size: 4rem;
+        color: white;
         transition: all 0.4s ease-in-out;
       }
 
       .skill-box:hover .skill-info i {
         color: black;
+        transform: scale(1.1);
+      }
+
+      /* SVG icon styling */
+      .skill-info svg {
+        width: 4rem;
+        height: 4rem;
+        fill: white;
+        transition: all 0.4s ease-in-out;
+      }
+
+      .skill-box:hover .skill-info svg {
+        fill: black;
         transform: scale(1.1);
       }
 
@@ -479,6 +499,13 @@
       }
 
       /* Responsive */
+      @media (max-width: 1024px) {
+        .skills-container {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+      }
+
       @media (max-width: 768px) {
         html {
           font-size: 55%;
@@ -538,6 +565,10 @@
         .contact h2 {
           font-size: 5rem;
           margin-bottom: 3rem;
+        }
+
+        .skills-container {
+          grid-template-columns: 1fr;
         }
 
         /* Mobile Navigation */
@@ -763,20 +794,51 @@
         <div class="skill-box">
           <div class="skill-info">
             <div class="skill-icons"><i class="bx bx-bar-chart"></i></div>
-            <h4>Data Visualisation</h4>
-            <p>Microsoft POWER BI | TABLEAU</p>
+            <h4>Data Preprocessing & Visualisation</h4>
+            <p>Microsoft POWER BI | TABLEAU | Excel</p>
           </div>
         </div>
-
+        
         <div class="skill-box">
           <div class="skill-info">
-            <div class="skill-icons"><i class="bx bx-table"></i></div>
-            <h4>MS Excel</h4>
-            <p>Advanced Excel</p>
+            <div class="skill-icons">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+              </svg>
+            </div>
+            <h4>Machine Learning</h4>
+            <p>Linear Regression | Logistic Regression | Decision Tree<br />
+            Random Forest | K-Nearest Neighbors | SVM<br />
+            XGBoost | Model Evaluation | Hyperparameter Tuning</p>
+          </div>
+        </div>
+        
+        <div class="skill-box">
+          <div class="skill-info">
+            <div class="skill-icons">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-lightbulb-fill" viewBox="0 0 16 16">
+                <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"/>
+              </svg>
+            </div>
+            <h4>Natural Language Processing</h4>
+            <p>Text Preprocessing | Tokenization | Lemmatization |
+            TF-IDF | Word2Vec | Transformers | Spacy | NLTK | Hugging Face</p>
+          </div>
+        </div>
+        
+        <div class="skill-box">
+          <div class="skill-info">
+            <div class="skill-icons">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-braces" viewBox="0 0 16 16">
+                <path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6M13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6"/>
+              </svg>
+            </div>
+            <h4>Programming Language</h4>
+            <p>C++ | R | HTML | CSS | JavaScript | Java</p>
           </div>
         </div>
       </div>
-    </section>
+    </section> 
 
    <section class="projects" id="projects">
   <h2>Projects</h2>
