@@ -225,12 +225,32 @@
         color: var(--text-color);
       }
 
+      /* Updated Skills Container for Perfect Grid Layout */
       .skills-container {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
         max-width: 1200px;
         margin: 0 auto;
+      }
+
+      /* Special styling for the last row with 2 cards */
+      .skills-container .skill-box:nth-child(7),
+      .skills-container .skill-box:nth-child(8) {
+        grid-column: span 1;
+      }
+
+      /* Center the last row with 2 cards */
+      .skills-container .skill-box:nth-child(7) {
+        grid-column: 1 / 2;
+        margin-left: auto;
+        margin-right: 1rem;
+      }
+
+      .skills-container .skill-box:nth-child(8) {
+        grid-column: 2 / 3;
+        margin-left: 1rem;
+        margin-right: auto;
       }
 
       .skill-box {
@@ -504,6 +524,14 @@
           grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
         }
+
+        /* Reset special positioning for tablet view */
+        .skills-container .skill-box:nth-child(7),
+        .skills-container .skill-box:nth-child(8) {
+          grid-column: span 1;
+          margin-left: 0;
+          margin-right: 0;
+        }
       }
 
       @media (max-width: 768px) {
@@ -567,8 +595,18 @@
           margin-bottom: 3rem;
         }
 
+        /* Mobile Skills Grid - 2 columns */
         .skills-container {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+        }
+
+        /* Reset special positioning for mobile view */
+        .skills-container .skill-box:nth-child(7),
+        .skills-container .skill-box:nth-child(8) {
+          grid-column: span 1;
+          margin-left: 0;
+          margin-right: 0;
         }
 
         /* Mobile Navigation */
@@ -687,8 +725,10 @@
           margin-bottom: 2.5rem;
         }
 
+        /* Keep 2 columns even on very small screens */
         .skills-container {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
         }
 
         .project-title {
