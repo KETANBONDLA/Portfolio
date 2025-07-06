@@ -148,6 +148,25 @@
         margin: 1rem 0;
         font-size: 4rem;
       }
+            /* --- typing span --- */
+      #typing-text {
+        font-family: monospace;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid var(--text-color);
+        animation: blink 0.7s step-end infinite;
+        
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          border-color: transparent;
+        }
+        50% {
+          border-color: var(--text-color);
+        }
+      }
 
       .home-content p {
         font-size: 1.5rem;
@@ -871,8 +890,8 @@
 
     <section class="home" id="home">
       <div class="home-content">
-        <h1>Hi, It's <span>Ketan</span></h1>
-        <h3>I'm a <span>Data Analyst</span></h3>
+        <h1>Hi, I'm <span>Ketan</span></h1>
+        <h3> <span id="typing-text"></span></h3>
         <!-- Desktop version -->
 <p class="desktop-only">
   A dedicated Computer Science and Engineering student specializing in AI and Data Science. I'm passionate about using technology to solve real-world problems through data-driven solutions. Actively involved in projects, research, and hackathons, I constantly seek opportunities to grow and collaborate within the tech community.
@@ -1125,6 +1144,32 @@
           navbar.classList.remove('active');
         }
       });
+         /* ----------  Typing Animation  ---------- */
+      const phrases = ["Data Analyst", "ML Engineer", "AI Enthusiast", "Software Developer"];
+      const typingSpan = document.getElementById("typing-text");
+      let pIndex = 0,
+        cIndex = 0,
+        deleting = false;
+
+      function type() {
+        const current = phrases[pIndex];
+        const visible = current.slice(0, cIndex);
+        typingSpan.textContent = visible;
+
+        if (!deleting && cIndex < current.length) {
+          cIndex++;
+          setTimeout(type, 120);
+        } else if (deleting && cIndex > 0) {
+          cIndex--;
+          setTimeout(type, 60);
+        } else {
+          deleting = !deleting;
+          if (!deleting) pIndex = (pIndex + 1) % phrases.length;
+          setTimeout(type, 1000); // pause at full / empty
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", type);
     </script>
   </body>
 </html>
