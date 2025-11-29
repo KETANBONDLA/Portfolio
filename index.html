@@ -1441,40 +1441,30 @@
       reveals.forEach((el) => observer.observe(el));
 
       /* ---- TMDB POSTER FETCH ---- */
-      const TMDB_API_KEY = "78ed2d653b1209aa7773cf5668acf069"; // replace with your key
+async function fetchPosterUrl(title) {
+  try {
+    const res = await fetch(`/api/poster?title=${encodeURIComponent(title)}`);
+    const data = await res.json();
+    if (data.posterUrl) return data.posterUrl;
+  } catch (err) {
+    console.error("Error fetching poster for", title, err);
+  }
 
-      async function fetchPosterUrl(title) {
-        try {
-          const res = await fetch(
-            `https://api.themoviedb.org/3/search/multi?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(
-              title
-            )}&language=en-US&include_adult=false`
-          );
-          const data = await res.json();
-          if (data.results && data.results.length > 0) {
-            const item = data.results[0];
-            if (item.poster_path) {
-              return `https://image.tmdb.org/t/p/w500${item.poster_path}`;
-            }
-          }
-        } catch (err) {
-          console.error("Error fetching poster for", title, err);
-        }
-        // fallback placeholder
-        return (
-          "https://placehold.co/300x450/020617/f9fafb?text=" +
-          encodeURIComponent(title)
-        );
-      }
+  // fallback
+  return (
+    "https://placehold.co/300x450/020617/f9fafb?text=" +
+    encodeURIComponent(title)
+  );
+}
 
-      async function loadMoviePosters() {
-        const posters = document.querySelectorAll(".movie-poster[data-movie]");
-        for (const img of posters) {
-          const title = img.getAttribute("data-movie");
-          const url = await fetchPosterUrl(title);
-          img.src = url;
-        }
-      }
+async function loadMoviePosters() {
+  const posters = document.querySelectorAll(".movie-poster[data-movie]");
+  for (const img of posters) {
+    const title = img.getAttribute("data-movie");
+    const url = await fetchPosterUrl(title);
+    img.src = url;
+  }
+}
 
       window.addEventListener("DOMContentLoaded", () => {
         type();
