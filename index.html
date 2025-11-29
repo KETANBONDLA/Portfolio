@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ketan Bondla • Story Portfolio</title>
 
-    <!-- Boxicons (not strictly needed now but harmless if left) -->
+    <!-- Boxicons -->
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -31,16 +31,16 @@
       }
 
       :root {
-        /* Theme 1: Neon Lavender x Aqua */
-        --bg-color: #050516;
-        --bg-color-2: #090922;
-        --accent-1: #a66cff;
-        --accent-2: #7d5fff;
-        --accent-3: #00d4ff;
-        --text-main: #ffffff;
-        --text-sub: #b8c0ff;
-        --card-bg: #0e1024;
-        --border-soft: #262a4a;
+        /* Theme: Black x Neon Blue */
+        --bg-color: #000000;
+        --bg-color-2: #050814;
+        --accent-1: #00e5ff; /* bright cyan */
+        --accent-2: #00b3ff; /* deeper blue */
+        --accent-3: #4fd5ff; /* soft neon */
+        --text-main: #f9fbff;
+        --text-sub: #8ea0c8;
+        --card-bg: #050812;
+        --border-soft: #182338;
       }
 
       html {
@@ -55,6 +55,25 @@
         min-height: 100vh;
       }
 
+      /* ----------- SKIP LINK ----------- */
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 0.8rem;
+        padding: 0.8rem 1.6rem;
+        background: #111827;
+        color: #ffffff;
+        border-radius: 999px;
+        font-size: 1.3rem;
+        z-index: 2001;
+      }
+
+      .skip-link:focus {
+        left: 1rem;
+        outline: 2px solid var(--accent-3);
+        outline-offset: 2px;
+      }
+
       /* ----------- BACKGROUND ORBS (CINEMATIC) ----------- */
       .bg-orbs {
         position: fixed;
@@ -62,9 +81,10 @@
         overflow: hidden;
         pointer-events: none;
         z-index: -1;
-        background: radial-gradient(circle at top left, #7d5fff22 0, transparent 55%),
-          radial-gradient(circle at bottom right, #00d4ff22 0, transparent 55%),
-          #050516;
+        background:
+          radial-gradient(circle at top left, #00b3ff26 0, transparent 55%),
+          radial-gradient(circle at bottom right, #00e5ff26 0, transparent 55%),
+          #000000;
       }
 
       .bg-orb {
@@ -73,25 +93,25 @@
         height: 320px;
         border-radius: 50%;
         filter: blur(40px);
-        opacity: 0.6;
+        opacity: 0.65;
         transform: translate3d(0, 0, 0);
         will-change: transform;
       }
 
       .bg-orb.orb-1 {
-        background: #a66cffaa;
+        background: #00b3ffaa;
         top: -80px;
         left: -40px;
       }
 
       .bg-orb.orb-2 {
-        background: #00d4ffaa;
+        background: #00e5ffaa;
         bottom: -120px;
         right: -60px;
       }
 
       .bg-orb.orb-3 {
-        background: #7d5fffaa;
+        background: #4fd5ffaa;
         top: 40%;
         left: 10%;
       }
@@ -103,7 +123,7 @@
         left: 0;
         height: 4px;
         width: 0;
-        background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+        background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
         z-index: 2000;
       }
 
@@ -121,11 +141,11 @@
         backdrop-filter: blur(18px);
         background: linear-gradient(
           to bottom,
-          rgba(5, 5, 22, 0.95),
-          rgba(5, 5, 22, 0.6),
+          rgba(0, 0, 0, 0.95),
+          rgba(0, 0, 0, 0.65),
           transparent
         );
-        border-bottom: 1px solid rgba(166, 108, 255, 0.2);
+        border-bottom: 1px solid rgba(0, 179, 255, 0.3);
       }
 
       .logo-text {
@@ -135,7 +155,7 @@
       }
 
       .logo-text span {
-        background: linear-gradient(270deg, var(--accent-1), var(--accent-3));
+        background: linear-gradient(270deg, var(--accent-1), var(--accent-2));
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
@@ -164,8 +184,8 @@
         border-radius: 999px;
         background: linear-gradient(
           90deg,
-          var(--accent-1),
           var(--accent-2),
+          var(--accent-1),
           var(--accent-3)
         );
         transition: width 0.25s ease;
@@ -187,21 +207,21 @@
         border-radius: 999px;
         border: none;
         cursor: pointer;
-        color: #050516;
+        color: #001018;
         background: linear-gradient(
           120deg,
           var(--accent-1),
           var(--accent-2),
           var(--accent-3)
         );
-        box-shadow: 0 0 20px rgba(166, 108, 255, 0.55);
+        box-shadow: 0 0 14px rgba(0, 229, 255, 0.5);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
         white-space: nowrap;
       }
 
       .gradient-btn:hover {
         transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 0 30px rgba(166, 108, 255, 0.8);
+        box-shadow: 0 0 22px rgba(0, 229, 255, 0.8);
       }
 
       #menu-icon {
@@ -211,6 +231,10 @@
       }
 
       /* ----------- SECTIONS / STORY LAYOUT ----------- */
+      main {
+        display: block;
+      }
+
       section {
         min-height: 100vh;
         padding: 10rem 12% 8rem;
@@ -229,7 +253,7 @@
         font-size: 1.4rem;
         text-transform: uppercase;
         letter-spacing: 0.3em;
-        color: var(--accent-3);
+        color: var(--accent-1);
       }
 
       .chapter-title {
@@ -254,10 +278,10 @@
         width: 2px;
         background: linear-gradient(
           to bottom,
-          rgba(125, 95, 255, 0.15),
-          rgba(0, 212, 255, 0.7)
+          rgba(0, 179, 255, 0.15),
+          rgba(0, 229, 255, 0.75)
         );
-        opacity: 0.7;
+        opacity: 0.8;
         z-index: 10;
       }
 
@@ -267,8 +291,8 @@
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        background: radial-gradient(circle, var(--accent-3), var(--accent-1));
-        box-shadow: 0 0 14px rgba(0, 212, 255, 0.9);
+        background: radial-gradient(circle, var(--accent-1), var(--accent-2));
+        box-shadow: 0 0 14px rgba(0, 229, 255, 0.9);
         opacity: 0.4;
         transition: opacity 0.25s ease, transform 0.25s ease;
       }
@@ -302,7 +326,7 @@
       }
 
       .home-heading span {
-        background: linear-gradient(90deg, var(--accent-2), var(--accent-3));
+        background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -317,7 +341,7 @@
         font-family: "Poppins", monospace;
         white-space: nowrap;
         overflow: hidden;
-        border-right: 2px solid var(--accent-3);
+        border-right: 2px solid var(--accent-1);
         animation: blink 0.8s step-end infinite;
       }
 
@@ -327,7 +351,7 @@
           border-color: transparent;
         }
         50% {
-          border-color: var(--accent-3);
+          border-color: var(--accent-1);
         }
       }
 
@@ -382,8 +406,8 @@
         display: inline-block;
         padding: 1.2rem 2.8rem;
         border-radius: 999px;
-        border: 1px solid rgba(184, 192, 255, 0.3);
-        background: rgba(9, 9, 34, 0.9);
+        border: 1px solid rgba(127, 178, 255, 0.35);
+        background: rgba(2, 10, 28, 0.95);
         color: var(--text-main);
         font-size: 1.5rem;
         font-weight: 500;
@@ -399,18 +423,18 @@
           var(--accent-2),
           var(--accent-3)
         );
-        color: #050516;
-        box-shadow: 0 0 18px rgba(166, 108, 255, 0.6);
+        color: #001018;
+        box-shadow: 0 0 16px rgba(0, 229, 255, 0.6);
         border: none;
       }
 
       .btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 0 16px rgba(0, 0, 0, 0.7);
+        box-shadow: 0 0 14px rgba(0, 0, 0, 0.7);
       }
 
       .btn.btn-primary:hover {
-        box-shadow: 0 0 24px rgba(166, 108, 255, 0.9);
+        box-shadow: 0 0 22px rgba(0, 229, 255, 0.85);
       }
 
       .scroll-cue {
@@ -442,7 +466,7 @@
         width: 4px;
         height: 8px;
         border-radius: 999px;
-        background: var(--accent-3);
+        background: var(--accent-1);
         animation: scrollDot 1.2s infinite;
       }
 
@@ -503,13 +527,13 @@
 
       .skill-box:hover {
         transform: translateY(-6px);
-        border-color: rgba(0, 212, 255, 0.7);
+        border-color: rgba(0, 229, 255, 0.7);
         box-shadow: 0 18px 50px rgba(0, 0, 0, 0.85);
       }
 
       .skill-icon {
         font-size: 3rem;
-        color: var(--accent-3);
+        color: var(--accent-1);
       }
 
       .skill-box h4 {
@@ -552,8 +576,8 @@
 
       .project-card:hover {
         transform: translateY(-6px);
-        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.9);
-        border-color: rgba(166, 108, 255, 0.9);
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.9);
+        border-color: rgba(0, 229, 255, 0.9);
       }
 
       .project-title {
@@ -596,9 +620,9 @@
         font-size: 1.2rem;
         padding: 0.7rem 1.6rem;
         border-radius: 999px;
-        background: rgba(7, 13, 40, 0.9);
+        background: rgba(2, 12, 32, 0.96);
         color: var(--text-main);
-        border: 1px solid rgba(125, 95, 255, 0.6);
+        border: 1px solid rgba(0, 179, 255, 0.7);
       }
 
       .expand-indicator {
@@ -606,7 +630,7 @@
         right: 1.4rem;
         bottom: 1.4rem;
         font-size: 2.2rem;
-        color: var(--accent-3);
+        color: var(--accent-1);
         transition: transform 0.3s ease;
       }
 
@@ -614,7 +638,7 @@
         transform: rotate(180deg);
       }
 
-      /* ----------- MOVIE RECOMMENDATIONS (CHAPTER 5) ----------- */
+      /* ----------- MOVIE RECOMMENDATIONS (CHAPTER 4) ----------- */
       .movies-inner {
         width: 100%;
         display: flex;
@@ -640,7 +664,7 @@
 
       .movie-subheading {
         font-size: 2.4rem;
-        color: var(--accent-3);
+        color: var(--accent-1);
         margin-bottom: 1.6rem;
       }
 
@@ -661,13 +685,13 @@
         gap: 1rem;
         text-align: center;
         transition: 0.25s ease;
-        box-shadow: 0 0 20px rgba(0, 212, 255, 0.08);
+        box-shadow: 0 0 18px rgba(0, 179, 255, 0.15);
       }
 
       .movie-card:hover {
         transform: translateY(-6px);
-        border-color: var(--accent-3);
-        box-shadow: 0 12px 30px rgba(0, 212, 255, 0.25);
+        border-color: var(--accent-1);
+        box-shadow: 0 12px 30px rgba(0, 229, 255, 0.25);
       }
 
       .movie-poster {
@@ -688,7 +712,7 @@
         color: var(--text-sub);
       }
 
-      /* ----------- CONTACT / CHAPTER 4 ----------- */
+      /* ----------- CONTACT / CHAPTER 5 ----------- */
       .contact {
         align-items: center;
         justify-content: center;
@@ -729,8 +753,8 @@
         padding: 1.4rem 1.6rem;
         font-size: 1.4rem;
         border-radius: 1.2rem;
-        border: 1px solid rgba(184, 192, 255, 0.35);
-        background: rgba(5, 8, 30, 0.95);
+        border: 1px solid rgba(127, 178, 255, 0.35);
+        background: rgba(1, 8, 26, 0.95);
         color: var(--text-main);
         outline: none;
       }
@@ -742,8 +766,8 @@
 
       .input-box input:focus,
       textarea:focus {
-        border-color: var(--accent-3);
-        box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.4);
+        border-color: var(--accent-1);
+        box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.4);
       }
 
       /* ----------- FOOTER ----------- */
@@ -795,8 +819,8 @@
           gap: 1.5rem;
           padding: 1.6rem 1.8rem;
           border-radius: 1.6rem;
-          background: rgba(5, 5, 24, 0.97);
-          border: 1px solid rgba(166, 108, 255, 0.4);
+          background: rgba(0, 0, 0, 0.97);
+          border: 1px solid rgba(0, 179, 255, 0.5);
           display: none;
         }
 
@@ -850,6 +874,8 @@
   </head>
 
   <body>
+    <a href="#home" class="skip-link">Skip to main content</a>
+
     <div class="bg-orbs">
       <div class="bg-orb orb-1" data-speed="0.1"></div>
       <div class="bg-orb orb-2" data-speed="-0.06"></div>
@@ -861,7 +887,7 @@
     <header class="header">
       <div class="logo-text">Ketan <span>Bondla</span></div>
 
-      <nav class="navbar">
+      <nav class="navbar" aria-label="Primary">
         <a href="#home" class="active">Intro</a>
         <a href="#story">Story</a>
         <a href="#skills">Skills</a>
@@ -870,417 +896,434 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <i class="bx bx-menu" id="menu-icon"></i>
+      <i
+        class="bx bx-menu"
+        id="menu-icon"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+      ></i>
 
       <a href="#contact">
         <button class="gradient-btn">Let’s Connect</button>
       </a>
     </header>
 
-    <!-- CHAPTER 0: HERO -->
-    <section class="home" id="home">
-      <div class="home-left reveal">
-        <p class="chapter-label">Chapter 0 • Prologue</p>
-        <h1 class="home-heading">
-          Hi, I’m <span>Ketan</span>.
-        </h1>
-        <p class="home-role">
-          <span id="typing-text"></span>
-        </p>
-        <p class="home-description">
-          A highly motivated Artificial Intelligence and Data Science student
-          who loves bridging the gap between intricate technology and
-          user-centric design. I enjoy building full-stack AI experiences where
-          clean interfaces meet solid machine learning foundations.
-        </p>
-
-        <div class="social-icons">
-          <a href="https://github.com/KETANBONDLA" target="_blank">Github</a>
-          <a
-            href="https://www.linkedin.com/in/ketan-bondla-9113ba261/"
-            target="_blank"
-            >LinkedIn</a
-          >
-          <a href="https://www.instagram.com/ketan.bondla/" target="_blank"
-            >Instagram</a
-          >
-        </div>
-
-        <div class="btn-group">
-          <a
-            href="https://drive.google.com/file/d/1SI_jGCSbHCHa8djNGIEcXE8JIs3t37VT/view?usp=sharing"
-            class="btn btn-primary"
-            target="_blank"
-            >View Resume</a
-          >
-          <a
-            href="https://drive.google.com/drive/folders/1zTM9q_gi7G64Ywvpp3N5QH816G5Q8TAF?usp=sharing"
-            class="btn"
-            target="_blank"
-            >Certificates</a
-          >
-        </div>
-      </div>
-
-      <div class="scroll-cue">
-        <div class="scroll-cue-icon">
-          <div class="scroll-cue-dot"></div>
-        </div>
-        <span>Scroll to begin the story</span>
-      </div>
-    </section>
-
     <!-- TIMELINE -->
-    <div class="story-timeline">
-      <div class="story-dot" data-section="home" style="top: 10%;"></div>
-      <div class="story-dot" data-section="story" style="top: 35%;"></div>
-      <div class="story-dot" data-section="skills" style="top: 60%;"></div>
-      <div class="story-dot" data-section="projects" style="top: 82%;"></div>
+    <div class="story-timeline" aria-hidden="true">
+      <div class="story-dot" data-section="home" style="top: 8%;"></div>
+      <div class="story-dot" data-section="story" style="top: 30%;"></div>
+      <div class="story-dot" data-section="skills" style="top: 50%;"></div>
+      <div class="story-dot" data-section="projects" style="top: 70%;"></div>
+      <div class="story-dot" data-section="movies" style="top: 85%;"></div>
+      <div class="story-dot" data-section="contact" style="top: 95%;"></div>
     </div>
 
-    <!-- CHAPTER 1: STORY / SPARK -->
-    <section class="story-section" id="story">
-      <div class="reveal">
-        <p class="chapter-label">Chapter 1 • The Spark</p>
-        <h2 class="chapter-title">From curiosity to crafted experiences.</h2>
-        <p class="chapter-subtitle">
-          My journey started with a simple curiosity: how do AI systems,
-          dashboards, and interfaces actually work together as one product?
-          That question led me into AI, ML, and eventually UI/UX design.
-        </p>
-        <p class="chapter-subtitle">
-          Over time, I’ve grown into a versatile builder—working on full-stack
-          AI applications, designing intuitive interfaces, and collaborating
-          closely with teams to move projects from concept to polished
-          experiences. I love translating complex technology into flows that
-          feel simple, clear, and human-friendly.
-        </p>
-        <p class="chapter-subtitle">
-          Today, I’m pursuing my B.Tech in Artificial Intelligence and Data
-          Science at Ajeenkya DY Patil University while actively building
-          projects, leading design efforts, and contributing to tech
-          communities.
-        </p>
-      </div>
-    </section>
+    <main>
+      <!-- CHAPTER 0: HERO -->
+      <section class="home" id="home">
+        <div class="home-left reveal">
+          <p class="chapter-label">Chapter 0 • Prologue</p>
+          <h1 class="home-heading">
+            Hi, I’m <span>Ketan</span>.
+          </h1>
+          <p class="home-role">
+            <span id="typing-text"></span>
+          </p>
+          <p class="home-description">
+            A highly motivated Artificial Intelligence and Data Science student
+            who loves bridging the gap between intricate technology and
+            user-centric design. I enjoy building full-stack AI experiences
+            where clean interfaces meet solid machine learning foundations.
+          </p>
 
-    <!-- CHAPTER 2: SKILLS -->
-    <section class="story-section" id="skills">
-      <div class="skills-content reveal">
-        <div class="skills-header-row">
-          <div class="skills-header-text">
-            <p class="chapter-label">Chapter 2 • Tools of the Trade</p>
-            <h2 class="chapter-title">What I work with.</h2>
-            <p class="chapter-subtitle">
-              A blend of AI, data, and design skills that help me move from
-              problem-space to pixel-perfect, usable solutions.
-            </p>
+          <div class="social-icons">
+            <a
+              href="https://github.com/KETANBONDLA"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Github</a
+            >
+            <a
+              href="https://www.linkedin.com/in/ketan-bondla-9113ba261/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn</a
+            >
+            <a
+              href="https://www.instagram.com/ketan.bondla/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Instagram</a
+            >
+          </div>
+
+          <div class="btn-group">
+            <a
+              href="https://drive.google.com/file/d/1SI_jGCSbHCHa8djNGIEcXE8JIs3t37VT/view?usp=sharing"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Resume</a
+            >
+            <a
+              href="https://drive.google.com/drive/folders/1zTM9q_gi7G64Ywvpp3N5QH816G5Q8TAF?usp=sharing"
+              class="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Certificates</a
+            >
           </div>
         </div>
 
-        <div class="skills-grid">
-          <div class="skill-box">
-            <div class="skill-icon"><i class="bx bx-code-alt"></i></div>
-            <h4>Languages</h4>
-            <p>Python • R • SQL • JavaScript • HTML • CSS</p>
+        <div class="scroll-cue">
+          <div class="scroll-cue-icon">
+            <div class="scroll-cue-dot"></div>
+          </div>
+          <span>Scroll to begin the story</span>
+        </div>
+      </section>
+
+      <!-- CHAPTER 1: STORY / SPARK -->
+      <section class="story-section" id="story">
+        <div class="reveal">
+          <p class="chapter-label">Chapter 1 • The Spark</p>
+          <h2 class="chapter-title">From curiosity to crafted experiences.</h2>
+          <p class="chapter-subtitle">
+            My journey started with a simple curiosity: how do AI systems,
+            dashboards, and interfaces actually work together as one product?
+            That question led me into AI, ML, and eventually UI/UX design.
+          </p>
+          <p class="chapter-subtitle">
+            Over time, I’ve grown into a versatile builder—working on full-stack
+            AI applications, designing intuitive interfaces, and collaborating
+            closely with teams to move projects from concept to polished
+            experiences. I love translating complex technology into flows that
+            feel simple, clear, and human-friendly.
+          </p>
+          <p class="chapter-subtitle">
+            Today, I’m pursuing my B.Tech in Artificial Intelligence and Data
+            Science at Ajeenkya DY Patil University while actively building
+            projects, leading design efforts, and contributing to tech
+            communities.
+          </p>
+        </div>
+      </section>
+
+      <!-- CHAPTER 2: SKILLS -->
+      <section class="story-section" id="skills">
+        <div class="skills-content reveal">
+          <div class="skills-header-row">
+            <div class="skills-header-text">
+              <p class="chapter-label">Chapter 2 • Tools of the Trade</p>
+              <h2 class="chapter-title">What I work with.</h2>
+              <p class="chapter-subtitle">
+                A blend of AI, data, and design skills that help me move from
+                problem-space to pixel-perfect, usable solutions.
+              </p>
+            </div>
           </div>
 
-          <div class="skill-box">
-            <div class="skill-icon"><i class="bx bx-brain"></i></div>
-            <h4>AI & Machine Learning</h4>
-            <p>
-              Linear/Lasso/Ridge Regression • KNN • Decision Trees •
-              TensorFlow • CNNs • ML workflows
-            </p>
-          </div>
+          <div class="skills-grid">
+            <div class="skill-box">
+              <div class="skill-icon"><i class="bx bx-code-alt"></i></div>
+              <h4>Languages</h4>
+              <p>Python • R • SQL • JavaScript • HTML • CSS</p>
+            </div>
 
-          <div class="skill-box">
-            <div class="skill-icon"><i class="bx bx-message-dots"></i></div>
-            <h4>Natural Language Processing</h4>
-            <p>
-              Text preprocessing • tokenization • TF-IDF • embeddings •
-              Transformers-based NLP
-            </p>
-          </div>
+            <div class="skill-box">
+              <div class="skill-icon"><i class="bx bx-brain"></i></div>
+              <h4>AI &amp; Machine Learning</h4>
+              <p>
+                Linear/Lasso/Ridge Regression • KNN • Decision Trees •
+                TensorFlow • CNNs • ML workflows
+              </p>
+            </div>
 
-          <div class="skill-box">
-            <div class="skill-icon"><i class="bx bx-cloud"></i></div>
-            <h4>Developer & Cloud Tools</h4>
-            <p>Git • GitHub • Google Cloud Platform</p>
-          </div>
+            <div class="skill-box">
+              <div class="skill-icon"><i class="bx bx-message-dots"></i></div>
+              <h4>Natural Language Processing</h4>
+              <p>
+                Text preprocessing • tokenization • TF-IDF • embeddings •
+                Transformers-based NLP
+              </p>
+            </div>
 
-          <div class="skill-box">
-            <div class="skill-icon"><i class="bx bx-layout"></i></div>
-            <h4>Design & Visualization</h4>
-            <p>
-              Figma • Canva • R Shiny • Power BI • Tableau • Wireframing •
-              Prototyping • User flows
-            </p>
-          </div>
+            <div class="skill-box">
+              <div class="skill-icon"><i class="bx bx-cloud"></i></div>
+              <h4>Developer &amp; Cloud Tools</h4>
+              <p>Git • GitHub • Google Cloud Platform</p>
+            </div>
 
-          <div class="skill-box">
-            <div class="skill-icon"><i class="bx bx-group"></i></div>
-            <h4>Collaboration & Leadership</h4>
-            <p>
-              Community building • cross-functional teamwork • event strategy
-              • design leadership
-            </p>
+            <div class="skill-box">
+              <div class="skill-icon"><i class="bx bx-layout"></i></div>
+              <h4>Design &amp; Visualization</h4>
+              <p>
+                Figma • Canva • R Shiny • Power BI • Tableau • Wireframing •
+                Prototyping • User flows
+              </p>
+            </div>
+
+            <div class="skill-box">
+              <div class="skill-icon"><i class="bx bx-group"></i></div>
+              <h4>Collaboration &amp; Leadership</h4>
+              <p>
+                Community building • cross-functional teamwork • event strategy
+                • design leadership
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- CHAPTER 3: EXPERIENCE & PROJECTS -->
-    <section class="projects" id="projects">
-      <div class="projects-inner reveal">
-        <p class="chapter-label">Chapter 3 • Work & Projects</p>
-        <h2 class="chapter-title">What I’ve been building.</h2>
-        <p class="chapter-subtitle">
-          A mix of internships and personal projects where I’ve applied AI,
-          full-stack development, and UI/UX design to solve real problems.
-        </p>
+      <!-- CHAPTER 3: EXPERIENCE & PROJECTS -->
+      <section class="projects" id="projects">
+        <div class="projects-inner reveal">
+          <p class="chapter-label">Chapter 3 • Work &amp; Projects</p>
+          <h2 class="chapter-title">What I’ve been building.</h2>
+          <p class="chapter-subtitle">
+            A mix of internships and personal projects where I’ve applied AI,
+            full-stack development, and UI/UX design to solve real problems.
+          </p>
 
-        <div class="projects-box">
-          <!-- SectFit -->
-          <div class="project-card" onclick="toggleProject(this)">
-            <h3 class="project-title">SectFit — Mobile Fitness App</h3>
-            <p class="project-description">
-              <b>Role:</b> UI/UX Design Intern (Remote) <br />
-              <b>Focus:</b> Mobile UI • Design systems • Prototyping<br /><br />
-              Designed 8+ key screens for a mobile fitness application,
-              including user profiles, settings, calorie trackers, and chat
-              interfaces. Worked closely with developers and product managers to
-              ship clean, responsive, and user-friendly UI mockups using Figma,
-              Canva, and FlutterFlow.<br />
-            </p>
-            <div class="project-links">
-              <!-- Add case study link when ready -->
+          <div class="projects-box">
+            <!-- SectFit -->
+            <div class="project-card" onclick="toggleProject(this)">
+              <h3 class="project-title">SectFit — Mobile Fitness App</h3>
+              <p class="project-description">
+                <b>Role:</b> UI/UX Design Intern (Remote) <br />
+                <b>Focus:</b> Mobile UI • Design systems • Prototyping<br /><br />
+                Designed 8+ key screens for a mobile fitness application,
+                including user profiles, settings, calorie trackers, and chat
+                interfaces. Worked closely with developers and product managers
+                to ship clean, responsive, and user-friendly UI mockups using
+                Figma, Canva, and FlutterFlow.<br />
+              </p>
+              <div class="project-links">
+                <!-- Add case study link when ready -->
+              </div>
+              <i class="bx bx-chevron-down expand-indicator"></i>
             </div>
-            <i class="bx bx-chevron-down expand-indicator"></i>
-          </div>
 
-          <!-- Feasto -->
-          <div class="project-card" onclick="toggleProject(this)">
-            <h3 class="project-title">Feasto — Food & Restaurant Website</h3>
-            <p class="project-description">
-              <b>Role:</b> UI/UX Designer (Remote) <br />
-              <b>Focus:</b> Web design • Design systems<br /><br />
-              Led the end-to-end visual design for the Feasto website, from
-              early concepts to developer-ready handoff. Created a cohesive
-              design system with illustrations, layouts, banners, and icons to
-              ensure a consistent brand experience across desktop and mobile.
-            </p>
-            <div class="project-links"></div>
-            <i class="bx bx-chevron-down expand-indicator"></i>
-          </div>
-
-          <!-- Saarthi-AI -->
-          <div class="project-card" onclick="toggleProject(this)">
-            <h3 class="project-title">Saarthi-AI — AI for Farmers</h3>
-            <p class="project-description">
-              <b>Role:</b> AI/ML Developer<br />
-              <b>Tech:</b> TensorFlow • CNNs • Regression models • NLP<br /><br />
-              Built an AI-powered platform to assist Indian farmers with plant
-              disease detection, crop yield prediction, and a GenAI-based
-              advisory chatbot. Achieved over 92% accuracy in disease
-              identification using CNNs and deployed regression models for
-              robust, environment-aware yield forecasting.
-            </p>
-            <div class="project-links">
-              <!-- Add link if you host it -->
+            <!-- Feasto -->
+            <div class="project-card" onclick="toggleProject(this)">
+              <h3 class="project-title">Feasto — Food &amp; Restaurant Website</h3>
+              <p class="project-description">
+                <b>Role:</b> UI/UX Designer (Remote) <br />
+                <b>Focus:</b> Web design • Design systems<br /><br />
+                Led the end-to-end visual design for the Feasto website, from
+                early concepts to developer-ready handoff. Created a cohesive
+                design system with illustrations, layouts, banners, and icons to
+                ensure a consistent brand experience across desktop and mobile.
+              </p>
+              <div class="project-links"></div>
+              <i class="bx bx-chevron-down expand-indicator"></i>
             </div>
-            <i class="bx bx-chevron-down expand-indicator"></i>
-          </div>
 
-          <!-- Pawsafe-VC -->
-          <div class="project-card" onclick="toggleProject(this)">
-            <h3 class="project-title">Pawsafe VC — Pet Health Platform</h3>
-            <p class="project-description">
-              <b>Role:</b> Full-Stack Developer (In progress)<br />
-              <b>Tech:</b> Django • React • MySQL<br /><br />
-              Developing a full-stack platform to help pet owners and
-              organizations manage dog vaccination records. Building features
-              like vaccination tracking, pet adoption listings, a community
-              blog, and automated email reminders for upcoming vaccinations.
-            </p>
-            <div class="project-links"></div>
-            <i class="bx bx-chevron-down expand-indicator"></i>
-          </div>
+            <!-- Saarthi-AI -->
+            <div class="project-card" onclick="toggleProject(this)">
+              <h3 class="project-title">Saarthi-AI — AI for Farmers</h3>
+              <p class="project-description">
+                <b>Role:</b> AI/ML Developer<br />
+                <b>Tech:</b> TensorFlow • CNNs • Regression models • NLP<br /><br />
+                Built an AI-powered platform to assist Indian farmers with plant
+                disease detection, crop yield prediction, and a GenAI-based
+                advisory chatbot. Achieved over 92% accuracy in disease
+                identification using CNNs and deployed regression models for
+                robust, environment-aware yield forecasting.
+              </p>
+              <div class="project-links">
+                <!-- Add link if you host it -->
+              </div>
+              <i class="bx bx-chevron-down expand-indicator"></i>
+            </div>
 
-         
-    </section>
-
-    <!-- CHAPTER 5: MOVIE RECOMMENDATIONS -->
-    <section class="story-section" id="movies">
-      <div class="movies-inner reveal">
-        <div class="movies-header-row">
-          <div class="movies-header-text">
-            <p class="chapter-label">Chapter 5 • Movie Recommendations</p>
-            <h2 class="chapter-title">Movies I Recommend</h2>
-            <p class="chapter-subtitle">
-              A curated list of films I think are worth your time — from timeless all-timers
-              to this month’s current favourites.
-            </p>
+            <!-- Pawsafe-VC -->
+            <div class="project-card" onclick="toggleProject(this)">
+              <h3 class="project-title">Pawsafe VC — Pet Health Platform</h3>
+              <p class="project-description">
+                <b>Role:</b> Full-Stack Developer (In progress)<br />
+                <b>Tech:</b> Django • React • MySQL<br /><br />
+                Developing a full-stack platform to help pet owners and
+                organizations manage dog vaccination records. Building features
+                like vaccination tracking, pet adoption listings, a community
+                blog, and automated email reminders for upcoming vaccinations.
+              </p>
+              <div class="project-links"></div>
+              <i class="bx bx-chevron-down expand-indicator"></i>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- All Timers -->
-        <div class="movie-section">
-          <h3 class="movie-subheading">🎬 All Timers</h3>
-          <div class="movie-grid">
-
-            <!-- Predestination -->
-            <div class="movie-card">
-              <img
-                class="movie-poster"
-                data-movie="Predestination"
-                alt="Predestination poster"
-              />
-              <div class="movie-title">Predestination</div>
-              <div class="movie-meta">Sci-Fi • Time Travel • Thriller</div>
+      <!-- CHAPTER 4: MOVIE RECOMMENDATIONS -->
+      <section class="story-section" id="movies">
+        <div class="movies-inner reveal">
+          <div class="movies-header-row">
+            <div class="movies-header-text">
+              <p class="chapter-label">Chapter 4 • Movie Recommendations</p>
+              <h2 class="chapter-title">Movies I Recommend</h2>
+              <p class="chapter-subtitle">
+                A curated list of films I think are worth your time — from timeless all-timers
+                to this month’s current favourites.
+              </p>
             </div>
+          </div>
 
-            <!-- Tumbbad -->
-            <div class="movie-card">
-              <img
-                class="movie-poster"
-                data-movie="Tumbbad"
-                alt="Tumbbad poster"
-              />
-              <div class="movie-title">Tumbbad</div>
-              <div class="movie-meta">Horror • Fantasy • Cult Classic</div>
+          <!-- All Timers -->
+          <div class="movie-section">
+            <h3 class="movie-subheading">🎬 All Timers</h3>
+            <div class="movie-grid">
+              <!-- Predestination -->
+              <div class="movie-card">
+                <img
+                  class="movie-poster"
+                  data-movie="Predestination"
+                  alt="Poster of the film Predestination"
+                />
+                <div class="movie-title">Predestination</div>
+                <div class="movie-meta">Sci-Fi • Time Travel • Thriller</div>
+              </div>
+
+              <!-- Tumbbad -->
+              <div class="movie-card">
+                <img
+                  class="movie-poster"
+                  data-movie="Tumbbad"
+                  alt="Poster of the film Tumbbad"
+                />
+                <div class="movie-title">Tumbbad</div>
+                <div class="movie-meta">Horror • Fantasy • Cult Classic</div>
+              </div>
+
+              <!-- A Death in the Gunj -->
+              <div class="movie-card">
+                <img
+                  class="movie-poster"
+                  data-movie="A Death in the Gunj"
+                  alt="Poster of the film A Death in the Gunj"
+                />
+                <div class="movie-title">A Death in the Gunj</div>
+                <div class="movie-meta">Drama • Indie • Psychological</div>
+              </div>
+
+              <!-- Kal Ho Naa Ho -->
+              <div class="movie-card">
+                <img
+                  class="movie-poster"
+                  data-movie="Kal Ho Naa Ho"
+                  alt="Poster of the film Kal Ho Naa Ho"
+                />
+                <div class="movie-title">Kal Ho Naa Ho</div>
+                <div class="movie-meta">Romance • Drama • Classic</div>
+              </div>
             </div>
+          </div>
 
-            <!-- A Death in the Gunj -->
-            <div class="movie-card">
-              <img
-                class="movie-poster"
-                data-movie="A Death in the Gunj"
-                alt="A Death in the Gunj poster"
-              />
-              <div class="movie-title">A Death in the Gunj</div>
-              <div class="movie-meta">Drama • Indie • Psychological</div>
+          <!-- This Month's Special -->
+          <div class="movie-section">
+            <h3 class="movie-subheading">⭐ This Month’s Special</h3>
+            <div class="movie-grid">
+              <div class="movie-card">
+                <img
+                  class="movie-poster"
+                  data-movie="Lokah"
+                  alt="Poster of the film Lokah"
+                />
+                <div class="movie-title">Lokah</div>
+                <div class="movie-meta">Fantasy • Myth • Indie</div>
+              </div>
+
+              <div class="movie-card">
+                <img
+                  class="movie-poster"
+                  data-movie="Diés Iraé"
+                  alt="Poster of the film Diés Iraé"
+                />
+                <div class="movie-title">Diés Iraé</div>
+                <div class="movie-meta">Psychological • Mystery • Indie</div>
+              </div>
+
+              <div class="movie-card">
+                <img
+                  class="movie-poster"
+                  data-movie="Homebound (2024)"
+                  alt="Poster of the film Homebound (2024)"
+                />
+                <div class="movie-title">Homebound (2024)</div>
+                <div class="movie-meta">Drama • Thriller • Ishaan Khattar</div>
+              </div>
+
+              <div class="movie-card">
+                <img
+                  class="movie-poster"
+                  data-movie="Stranger Things"
+                  alt="Poster of the series Stranger Things"
+                />
+                <div class="movie-title">Stranger Things</div>
+                <div class="movie-meta">Sci-Fi • Mystery • Series</div>
+              </div>
             </div>
-
-            <!-- Kal Ho Naa Ho -->
-            <div class="movie-card">
-              <img
-                class="movie-poster"
-                data-movie="Kal Ho Naa Ho"
-                alt="Kal Ho Naa Ho poster"
-              />
-              <div class="movie-title">Kal Ho Naa Ho</div>
-              <div class="movie-meta">Romance • Drama • Classic</div>
-            </div>
-
           </div>
         </div>
+      </section>
 
-        <!-- This Month's Special -->
-        <div class="movie-section">
-          <h3 class="movie-subheading">⭐ This Month’s Special</h3>
-          <div class="movie-grid">
+      <!-- CHAPTER 5: CONTACT -->
+      <section class="contact" id="contact">
+        <div class="contact-inner reveal">
+          <p class="chapter-label">Chapter 5 • Let’s Collaborate</p>
+          <h2 class="chapter-title">Got an idea or role in mind?</h2>
+          <p class="chapter-subtitle">
+            I’m open to opportunities in AI, data, and product-driven UI/UX. Share
+            a bit about what you’re building or hiring for, and I’ll get back to
+            you soon.
+          </p>
 
-            <div class="movie-card">
-              <img
-                class="movie-poster"
-                data-movie="Lokah"
-                alt="Lokah poster"
-              />
-              <div class="movie-title">Lokah</div>
-              <div class="movie-meta">Fantasy • Myth • Indie</div>
+          <form action="https://formspree.io/f/xgvwkrez" method="POST">
+            <div class="input-group">
+              <div class="input-box">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full name"
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email address"
+                  required
+                />
+              </div>
+              <div class="input-box">
+                <input
+                  type="tel"
+                  name="number"
+                  placeholder="Mobile number"
+                  required
+                />
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject"
+                  required
+                />
+              </div>
             </div>
 
-            <div class="movie-card">
-              <img
-                class="movie-poster"
-                data-movie="Diés Iraé"
-                alt="Diés Iraé poster"
-              />
-              <div class="movie-title">Diés Iraé</div>
-              <div class="movie-meta">Psychological • Mystery • Indie</div>
-            </div>
-
-            <div class="movie-card">
-              <img
-                class="movie-poster"
-                data-movie="Homebound (2024)"
-                alt="Homebound (2024) poster"
-              />
-              <div class="movie-title">Homebound (2024)</div>
-              <div class="movie-meta">Drama • Thriller • Ishaan Khattar</div>
-            </div>
-
-            <div class="movie-card">
-              <img
-                class="movie-poster"
-                data-movie="Stranger Things"
-                alt="Stranger Things poster"
-              />
-              <div class="movie-title">Stranger Things</div>
-              <div class="movie-meta">Sci-Fi • Mystery • Series</div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHAPTER 4: CONTACT -->
-    <section class="contact" id="contact">
-      <div class="contact-inner reveal">
-        <p class="chapter-label">Chapter 4 • Let’s Collaborate</p>
-        <h2 class="chapter-title">Got an idea or role in mind?</h2>
-        <p class="chapter-subtitle">
-          I’m open to opportunities in AI, data, and product-driven UI/UX. Share
-          a bit about what you’re building or hiring for, and I’ll get back to
-          you soon.
-        </p>
-
-        <form action="https://formspree.io/f/xgvwkrez" method="POST">
-          <div class="input-group">
             <div class="input-box">
-              <input
-                type="text"
-                name="name"
-                placeholder="Full name"
+              <textarea
+                name="msg"
+                placeholder="Tell me about your project, role, or question..."
                 required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email address"
-                required
-              />
+              ></textarea>
             </div>
-            <div class="input-box">
-              <input
-                type="number"
-                name="number"
-                placeholder="Mobile number"
-                required
-              />
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                required
-              />
-            </div>
-          </div>
 
-          <div class="input-box">
-            <textarea
-              name="msg"
-              placeholder="Tell me about your project, role, or question..."
-              required
-            ></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
-    </section>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
       © Ketan Bondla | All Rights Reserved
@@ -1310,7 +1353,7 @@
         let current = "";
         sections.forEach((section) => {
           const sectionTop = section.offsetTop - 160;
-          if (pageYOffset >= sectionTop) {
+          if (window.pageYOffset >= sectionTop) {
             current = section.getAttribute("id");
           }
         });
@@ -1334,11 +1377,13 @@
       const menuIcon = document.getElementById("menu-icon");
       const navbar = document.querySelector(".navbar");
       menuIcon.addEventListener("click", () => {
-        navbar.classList.toggle("active");
+        const isActive = navbar.classList.toggle("active");
+        menuIcon.setAttribute("aria-expanded", isActive ? "true" : "false");
       });
       document.querySelectorAll(".navbar a").forEach((link) => {
         link.addEventListener("click", () => {
           navbar.classList.remove("active");
+          menuIcon.setAttribute("aria-expanded", "false");
         });
       });
 
@@ -1369,14 +1414,14 @@
 
         if (!deleting && cIndex < current.length) {
           cIndex++;
-          setTimeout(type, 110);
+          setTimeout(type, 130);
         } else if (deleting && cIndex > 0) {
           cIndex--;
           setTimeout(type, 60);
         } else {
           deleting = !deleting;
           if (!deleting) pIndex = (pIndex + 1) % phrases.length;
-          setTimeout(type, 900);
+          setTimeout(type, 700);
         }
       }
 
@@ -1396,21 +1441,20 @@
       reveals.forEach((el) => observer.observe(el));
 
       /* ---- TMDB POSTER FETCH ---- */
-
-      const TMDB_API_KEY = "78ed2d653b1209aa7773cf5668acf069"; // <-- replace this
+      const TMDB_API_KEY = "78ed2d653b1209aa7773cf5668acf069"; // replace with your key
 
       async function fetchPosterUrl(title) {
         try {
           const res = await fetch(
-            `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(
+            `https://api.themoviedb.org/3/search/multi?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(
               title
             )}&language=en-US&include_adult=false`
           );
           const data = await res.json();
           if (data.results && data.results.length > 0) {
-            const movie = data.results[0];
-            if (movie.poster_path) {
-              return `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+            const item = data.results[0];
+            if (item.poster_path) {
+              return `https://image.tmdb.org/t/p/w500${item.poster_path}`;
             }
           }
         } catch (err) {
@@ -1418,7 +1462,7 @@
         }
         // fallback placeholder
         return (
-          "https://placehold.co/300x450/111827/ffffff?text=" +
+          "https://placehold.co/300x450/020617/f9fafb?text=" +
           encodeURIComponent(title)
         );
       }
