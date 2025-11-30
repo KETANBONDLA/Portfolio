@@ -780,9 +780,16 @@
       }
 
       @media (max-width: 768px) {
-        #menu-icon {
-          display: block;
-        }
+       #menu-icon {
+    display: block;
+    font-size: 3rem;
+    cursor: pointer;
+
+    position: absolute;
+    right: 10%;           /* aligns with header's horizontal padding */
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
         /* MOBILE NAVBAR FIX */
         .navbar {
@@ -1457,3 +1464,4 @@
     </script>
   </body>
 </html>
+
